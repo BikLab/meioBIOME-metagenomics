@@ -1,7 +1,7 @@
 # meioBIOME-metagenomics
 Computation pipeline for the assembly of host-associated metagenome-assembled genomes and recovery of host single-copy genes
 
-<img width="989" height="1329" alt="MeioBIOME-pipeline" src="https://github.com/user-attachments/assets/84691274-2653-4b50-b5d6-5f5e4ff8ae7a" />
+<img width="562" height="758" alt="Screenshot 2026-06-02 at 1 08 28 PM" src="https://github.com/user-attachments/assets/a6542a32-3878-4211-ad8e-f96f74bb79f0" />
 
 The `meioBIOME/config` folder is where you set up the configurations specific to your HPCC cluster or local compute environment. This folde contains three files that you can edit:
 
