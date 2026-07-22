@@ -41,7 +41,10 @@ rule metagenome_assembly:
         file=scratch_dir + "01-analysis/07-assembled-metaspades/{sample}-metagenome-assembly-done.txt"
     output:
         file=output_dir + "02-metagenome-assembly/{sample}-metagenome.fa"
+    params:
+        dir=output_dir + "02-metagenome-assembly/"
     shell:
         '''
+        mkdir {params.dir}
         cp {input.contigs} {output.file}
         '''
