@@ -34,6 +34,8 @@ The `meioBIOME/workflow` folder contains four subdirectories that contain the da
 Clone the github directory:
 `git clone git@github.com:BikLab/meioBIOME-metagenomics.git`
 
+**NOTE**: You will need to create an ssh key for Github on your local HPCC cluster before you can run the above git clone command. Here are some general instructions on how to create this SSH key in Linux: https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server
+
 ### Step 4: Install Databases
 Install the following databases in the `workflow/databases` directory:
 1. Adapter files for Trimmomatic [https://github.com/usadellab/trimmomatic]
