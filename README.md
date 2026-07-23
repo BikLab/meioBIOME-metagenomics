@@ -30,9 +30,9 @@ The `meioBIOME/workflow` folder contains four subdirectories that contain the da
 6. Install snakemake within your newly created conda environment: `conda install bioconda::snakemake==7.32.0`
 
 ### Step 3: Download the meioBIOME pipeline
-
-Clone the github directory:
-`git clone git@github.com:BikLab/meioBIOME-metagenomics.git`
+1. Deactivate any conda environment you may have previously activated using the command `conda deactivate`
+2. Create a new directory for snakemake pipelines in a location of your choosing: `mkdir snakemake-pipelines` and `cd` into that directory before completing the following step
+3. Clone the meioBIOME pipepline directory using the following command: `git clone git@github.com:BikLab/meioBIOME-metagenomics.git`
 
 **NOTE**: You will need to create an ssh key for Github on your local HPCC cluster before you can run the above git clone command. Here are some general instructions on how to create this SSH key in Linux: https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server
 
