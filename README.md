@@ -32,7 +32,7 @@ The `meioBIOME/workflow` folder contains four subdirectories that contain the da
 ### Step 3: Download the meioBIOME pipeline
 
 Clone the github directory:
-`git clone ADDRESS`
+`git clone git@github.com:BikLab/meioBIOME-metagenomics.git`
 
 ### Step 4: Install Databases
 Install the following databases in the `workflow/databases` directory:
