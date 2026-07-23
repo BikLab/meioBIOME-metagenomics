@@ -38,6 +38,10 @@ The `meioBIOME/workflow` folder contains four subdirectories that contain the da
 
 ### Step 4: Install Databases
 Install the following databases in the `workflow/databases` directory:
+
+**NEED TO PACKAGE/POST SMALL DBS ON ZENODO**
+**LARGE DBS - KRAKEN + BUSCO + GTDBTK WILL HAVE SEPARATE DOWNLOAD INSTRUCTIONS***
+
 1. Adapter files for Trimmomatic [https://github.com/usadellab/trimmomatic]
 2. CheckM2 Database [https://github.com/chklovski/CheckM2]
 3. GTDBTK Database [https://github.com/ecogenomics/gtdbtk]
