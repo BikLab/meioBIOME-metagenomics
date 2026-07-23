@@ -101,9 +101,15 @@ rule host_genome_skim:
         multicopy=scratch_dir + "01-analysis/07-busco/{sample}/busco_host/run_" + busco_db_name + "/busco_sequences/multi_copy_busco_sequences/",
     shell:
         '''
-        cp -r {params.complete} {output.complete}
-        cp -r {params.fragment} {output.fragment}
-        cp -r {params.multicopy} {output.multicopy}
+        mkdir -p {output.complete}
+        mkdir -p {output.fragment}
+        mkdir -p {output.multicopy}
+        mkdir -p $(dirname {output.busco})
+
+        cp -r {params.complete}/. {output.complete}
+        cp -r {params.fragment}/. {output.fragment}
+        cp -r {params.multicopy}/. {output.multicopy}
+
         cp {input.busco} {output.busco}
         cp {input.mitoz_cir} {output.mitoz_cir}
         cp {input.mitoz_hit} {output.mitoz_hit}
