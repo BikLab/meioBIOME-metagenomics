@@ -38,13 +38,11 @@ rule filter_short:
 rule metagenome_assembly:
     input:
         contigs=scratch_dir + "01-analysis/07-assembled-metaspades/{sample}/scaffolds_1000.fa",
-        file=scratch_dir + "01-analysis/07-assembled-metaspades/{sample}-metagenome-assembly-done.txt"
+        done=scratch_dir + "01-analysis/07-assembled-metaspades/{sample}-metagenome-assembly-done.txt"
     output:
-        file=output_dir + "02-metagenome-assembly/{sample}-metagenome.fa"
-    params:
-        dir=output_dir + "02-metagenome-assembly/"
+        output_dir + "02-metagenome-assembly/{sample}-metagenome.fa"
     shell:
-        '''
-        mkdir {params.dir}
-        cp {input.contigs} {output.file}
-        '''
+        """
+        mkdir -p $(dirname {output})
+        cp {input.contigs} {output}
+        """

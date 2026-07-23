@@ -19,8 +19,5 @@ INPUT=/home/ad14556/snakemake-pipelines/metagenomicsPipeline
 module load Miniforge3/24.1.2-0
 source activate /home/ad14556/conda-envs/envs/snakemake
 
-#export TMPDIR=/scratch/ad14556/tmp
-#tmpdir=/scratch/ad14556/tmp/
-
-snakemake --ignore-incomplete --jobs 15 --until metagenome_assembly --use-conda --cluster-config config/cluster.yaml --keep-going --latency-wait 5 \
+snakemake --jobs 15 --until host_genome_skim --use-conda --cluster-config config/cluster.yaml --keep-going --latency-wait 5 \
     --cluster "sbatch --parsable --partition={cluster.partition} --job-name={cluster.name} --mem={cluster.mem}G --time={cluster.time} --nodes={cluster.nodes} --cpus-per-task={cluster.cpu} --ntasks={cluster.tasks} --mail-user={cluster.mail_user} --mail-type={cluster.mail_type}"

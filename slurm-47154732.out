@@ -1,0 +1,23 @@
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however crucial for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Using shell: /usr/bin/bash
+Provided cores: 68
+Rules claiming more threads will be scaled down.
+Provided resources: mem_mb=950000, mem_mib=905991, disk_mb=11832, disk_mib=11284
+Select jobs to execute...
+
+[Wed Jul 22 21:29:24 2026]
+rule metaspades:
+    input: /scratch/ad14556/snakemake-pipeline-temp/01-analysis/04-deduplicated/xyalidae_090_GA_IS_202408_R1_paired.fastq.gz, /scratch/ad14556/snakemake-pipeline-temp/01-analysis/04-deduplicated/xyalidae_090_GA_IS_202408_R2_paired.fastq.gz
+    output: /scratch/ad14556/snakemake-pipeline-temp/01-analysis/07-assembled-metaspades/xyalidae_090_GA_IS_202408/scaffolds.fasta, /scratch/ad14556/snakemake-pipeline-temp/01-analysis/07-assembled-metaspades/xyalidae_090_GA_IS_202408-metagenome-assembly-done.txt
+    log: /scratch/ad14556/snakemake-pipeline-temp/03-log/07-metaspades/xyalidae_090_GA_IS_202408-metaspades.err, /scratch/ad14556/snakemake-pipeline-temp/03-log/07-metaspades/xyalidae_090_GA_IS_202408-metaspades.out
+    jobid: 0
+    reason: Forced execution
+    wildcards: sample=xyalidae_090_GA_IS_202408
+    threads: 68
+    resources: mem_mb=950000, mem_mib=905991, disk_mb=11832, disk_mib=11284, tmpdir=/tmp
+
+Activating conda environment: .snakemake/conda/ee9a80f3c5e74d46c71560a3cf5f1328_
+[Thu Jul 23 00:40:51 2026]
+Finished job 0.
+1 of 1 steps (100%) done
