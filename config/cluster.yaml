@@ -114,7 +114,7 @@ pro_completebin:
     cpu: 48
     tasks: 1
     mem: 480
-    time: 07-00:00:00
+    time: 03-00:00:00
     name: pro_completebin
 
 pro_comebin:
@@ -122,7 +122,7 @@ pro_comebin:
     cpu: 24
     tasks: 1
     mem: 240
-    time: 07-00:00:00
+    time: 03-00:00:00
     name: pro_comebin
 
 contigtocomplete:
@@ -130,7 +130,7 @@ contigtocomplete:
     cpu: 1
     tasks: 1
     mem: 16
-    time: 07-00:00:00
+    time: 03-00:00:00
     name: contigtocomplete
 
 contigtometabat:
@@ -138,7 +138,7 @@ contigtometabat:
     cpu: 1
     tasks: 1
     mem: 16
-    time: 07-00:00:00
+    time: 03-00:00:00
     name: contigtometabat
 
 contigtocomebin:
@@ -146,7 +146,7 @@ contigtocomebin:
     cpu: 1
     tasks: 1
     mem: 16
-    time: 07-00:00:00
+    time: 03-00:00:00
     name: contigtocomebin
 
 pro_dastool:
@@ -184,7 +184,7 @@ krakenDB:
     cpu: 24
     tasks: 1
     mem: 250
-    time: 07-00:00:00
+    time: 03-00:00:00
     name: krakenDB
 
 kraken:

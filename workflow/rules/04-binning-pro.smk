@@ -167,21 +167,20 @@ rule pro_dastool:
             -o {params.basename} --write_bins --write_bin_evals -t 12 --score_threshold=0 > {log.out} 2> {log.err}; touch {output.done}
         '''
 
-rule prepare_bins:
+checkpoint prepare_bins:
     input:
         dastool=scratch_dir + "01-analysis/13-bacmags/08-dastool/{sample}-dastool-done.txt"
     output:
-        bins=scratch_dir + "01-analysis/13-bacmags/{sample}-microbiome-bins-done.txt"
+        bins=directory(scratch_dir + "01-analysis/13-bacmags/09-bins/{sample}")
     params:
-        dir=scratch_dir + "01-analysis/13-bacmags/09-bins",
-        final_bins=scratch_dir + "01-analysis/13-bacmags/09-bins/{sample}_MAG_",
+        final_bins=scratch_dir + "01-analysis/13-bacmags/09-bins/{sample}/{sample}_MAG_",
         table=scratch_dir + "01-analysis/13-bacmags/08-dastool/{sample}/{sample}_DASTool_summary.tsv",
         dastool_bins=scratch_dir + "01-analysis/13-bacmags/08-dastool/{sample}/{sample}_DASTool_bins",
         comp=completeness,
         cont=contamination
     shell:
         """
-        mkdir -p {params.dir}
+        mkdir -p {output.bins}
 
         python workflow/scripts/process_data_2.py \
             {params.table} \
@@ -189,18 +188,31 @@ rule prepare_bins:
             --completeness_threshold {params.comp} \
             --contamination_threshold {params.cont} \
             --source_dir {params.dastool_bins}
-
-        touch {output.bins}
         """
+
+from pathlib import Path
+
+
+def magpurify_outputs(wc):
+    ckpt = checkpoints.prepare_bins.get(sample=wc.sample)
+    bindir = Path(ckpt.output.bins)
+
+    bins = [f.stem for f in bindir.glob("*.fa")]
+
+    return expand(
+        scratch_dir + "01-analysis/13-bacmags/10-magpurify/{sample}/{bin}.fa",
+        sample=wc.sample,
+        bin=bins,
+    )
 
 rule magpurify:
     input:
-        bin=scratch_dir + "01-analysis/13-bacmags/09-bins/{bin}.fa",
+        bin=scratch_dir + "01-analysis/13-bacmags/09-bins/{sample}/{bin}.fa",
         db=magpurify_db
     output:
-        mag=scratch_dir + "01-analysis/13-bacmags/10-magpurify/{bin}.fa"
+        mag=scratch_dir + "01-analysis/13-bacmags/10-magpurify/{sample}/{bin}.fa"
     params:
-        temp=lambda wc: scratch_dir + f"01-analysis/13-bacmags/10-magpurify-temp/{wc.bin}"
+        temp=lambda wc: scratch_dir + f"01-analysis/13-bacmags/10-magpurify-temp/{wc.sample}/{wc.bin}"
     conda:
         "../envs/magpurify.yaml"
     shell:
@@ -211,38 +223,35 @@ rule magpurify:
         magpurify phylo-markers "{input.bin}" "{params.temp}" --db "{input.db}"
         magpurify clade-markers "{input.bin}" "{params.temp}" --db "{input.db}"
         magpurify known-contam "{input.bin}" "{params.temp}" --db "{input.db}"
-        magpurify gc-content "{input.bin}" "{params.temp}" --db "{input.db}"
+        magpurify gc-content "{input.bin}" "{params.temp}"
         magpurify clean-bin "{input.bin}" "{params.temp}" "{output.mag}"
         """
 
-def get_magpurify_bins(wc):
-    bins = [
-        os.path.basename(x).replace(".fa", "")
-        for x in glob.glob(
-            scratch_dir + f"01-analysis/13-bacmags/09-bins/{wc.sample}_MAG_*.fa"
-        )
-    ]
-
-    return expand(
-        scratch_dir + "01-analysis/13-bacmags/10-magpurify/{bin}.fa",
-        bin=bins
-    )
-
+rule magpurify_sample:
+    input:
+        mags=magpurify_outputs
+    output:
+        done=scratch_dir + "01-analysis/13-bacmags/10-magpurify/{sample}-magpurify-done.txt"
+    shell:
+        """
+        touch {output.done}
+        """
 
 rule microbiome_bins:
     input:
-        mags=get_magpurify_bins
-    output:
         done=scratch_dir + "01-analysis/13-bacmags/10-magpurify/{sample}-magpurify-done.txt"
+    output:
+        done=scratch_dir + "01-analysis/13-bacmags/{sample}-microbiome-bins-done.txt"
     params:
-        dir=output_dir + "04-microbiome-bins"
+        indir=scratch_dir + "01-analysis/13-bacmags/10-magpurify/{sample}/",
+        outdir=output_dir + "04-microbiome-bins"
     shell:
         r"""
-        mkdir -p "{params.dir}"
+        mkdir -p {params.outdir}
 
-        cp {input.mags} "{params.dir}/"
+        cp {params.indir}/{wildcards.sample}_MAG_*.fa {params.outdir}/
 
-        touch "{output.done}"
+        touch {output.done}
         """
 
 #rule prepare_bins:
