@@ -190,9 +190,6 @@ checkpoint prepare_bins:
             --source_dir {params.dastool_bins}
         """
 
-from pathlib import Path
-
-
 def magpurify_outputs(wc):
     ckpt = checkpoints.prepare_bins.get(sample=wc.sample)
     bindir = Path(ckpt.output.bins)

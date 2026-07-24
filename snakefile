@@ -2,6 +2,8 @@
 # Affiliation: University of Georgia
 # How to Run: snakemake --cores 1 --use-conda -s snakemakeFileName.smk
 
+from pathlib import Path
+
 configfile: "config/config.yaml" # edit config file with your project information
 clusterfile: "config/cluster.yaml" # edit cluster file
 
