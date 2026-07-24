@@ -22,18 +22,27 @@ The `meioBIOME/workflow` folder contains four subdirectories that contain the da
 1. On the University of Georga GACRC, you can load the module using: `ml Miniforge3`
 
 ### Step 2: Install snakemake
-1. On the University of Georga GACRC, first request an interactive node from the Sapelo2 login node: `interact --mem=16G`
-2. Create a new conda environment for the most up-to-date snakemake version: `mkdir snakemake-7.32.0`
+1. On the University of Georgia GACRC, first request an interactive node from the Sapelo2 login node: `interact --mem=16G`
+2. Create a new conda environment for **snakemake version 7**: `mkdir snakemake-7.32.0`
 3. Load the miniforge module `ml Miniforge3`
 4. Crate the conda environment (NOTE: you will get a warning that the directory already exists - enter **yes** to continue): `conda create -p snakemake-7.32.0`
 5. Activate the conda environment (NOTE: you may need to put the full file path to activate the conda environment correctly, depending on your HPCC or local computer setup): `source activate /FULL-PATH-HERE/snakemake-7.32.0`
 6. Install snakemake within your newly created conda environment: `conda install bioconda::snakemake==7.32.0`
 
 ### Step 3: Download the meioBIOME pipeline
-Clone the github directory. 
+1. Deactivate any conda environment you may have previously activated using the command `conda deactivate`
+2. Create a new directory for snakemake pipelines in a location of your choosing: `mkdir snakemake-pipelines` and `cd` into that directory before completing the following step
+3. Clone the meioBIOME pipepline directory using the following command: `git clone git@github.com:BikLab/meioBIOME-metagenomics.git`
+
+**NOTE**: You will need to create an ssh key for Github on your local HPCC cluster before you can run the above git clone command. Here are some general instructions on how to create this SSH key in Linux: https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server
 
 ### Step 4: Install Databases
 Install the following databases in the `workflow/databases` directory:
+
+UPDATE README: **NEED TO PACKAGE/POST SMALL DBS ON ZENODO**
+
+UPDATE README **LARGE DBS - KRAKEN + BUSCO + GTDBTK WILL HAVE SEPARATE DOWNLOAD INSTRUCTIONS***
+
 1. Adapter files for Trimmomatic [https://github.com/usadellab/trimmomatic]
 2. CheckM2 Database [https://github.com/chklovski/CheckM2]
 3. GTDBTK Database [https://github.com/ecogenomics/gtdbtk]
