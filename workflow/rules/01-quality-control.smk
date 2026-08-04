@@ -7,7 +7,7 @@ rule initial_fastqc:
     log:
         scratch_dir + "03-log/01-initial-fastqc/{file}.log"
     wrapper:
-        "v1.5.0/bio/fastqc"
+        "v2.8.0/bio/fastqc"
 
 rule initial_multiqc:
     input:
@@ -17,7 +17,7 @@ rule initial_multiqc:
     log:
         scratch_dir + "03-log/02-initial-multiqc.log"
     wrapper:
-        "v1.5.0/bio/multiqc"
+        "v2.8.0/bio/multiqc"
 
 rule trimmomatic:
     input:
@@ -37,7 +37,7 @@ rule trimmomatic:
     threads:
         32
     wrapper:
-        "v1.5.0/bio/trimmomatic/pe"
+        "v2.8.0/bio/trimmomatic/pe"
 
 rule fastp:
     input:
@@ -65,7 +65,7 @@ rule trimmed_fastqc:
     threads:
         2
     wrapper:
-        "v1.5.0/bio/fastqc"
+        "v2.8.0/bio/fastqc"
 
 rule trimmed_multiqc:
     input:
@@ -75,7 +75,7 @@ rule trimmed_multiqc:
     log:
         scratch_dir + "03-log/06-initial-multiqc.log"
     wrapper:
-        "v1.21.2/bio/multiqc"
+        "v2.8.0/bio/multiqc"
 
 #rule process_trimming:
 #    input:

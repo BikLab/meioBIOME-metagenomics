@@ -6,7 +6,7 @@
 # 1. absolute paths
 # 2. directories
 project_name: 'nematode_metagenomes'
-input_path: '/scratch/ad14556/snakemake-pipeline-temp/00-raw-data/'
+input_path: '/work/hmblab/test-data/'
 output_path: '/scratch/ad14556/snakemake-pipeline-final/'
 scratch_path: '/scratch/ad14556/snakemake-pipeline-temp/'
 
