@@ -21,14 +21,15 @@ The `meioBIOME/workflow` folder contains four subdirectories that contain the da
 ### Step 1: Install Miniforge3 (or load the module on your local HPCC)
 1. On the University of Georga GACRC, you can load the module using: `ml Miniforge3`
 
-### Step 2: Install snakemake
+### Step 2: Install snakemake and mamba
 1. On the University of Georgia GACRC, first request an interactive node from the Sapelo2 login node: `interact --mem=16G`
 2. Create a new conda environment for **snakemake version 7**: `mkdir snakemake-7.32.0`
 3. Load the miniforge module `ml Miniforge3`
 4. Crate the conda environment (NOTE: you will get a warning that the directory already exists - enter **yes** to continue): `conda create -p snakemake-7.32.0`
 5. Activate the conda environment (NOTE: you may need to put the full file path to activate the conda environment correctly, depending on your HPCC or local computer setup): `source activate /FULL-PATH-HERE/snakemake-7.32.0`
 6. Install snakemake within your newly created conda environment: `conda install bioconda::snakemake==7.32.0`
-
+7. Repeat the following steps for mamba version 1.
+   
 ### Step 3: Download the meioBIOME pipeline
 1. Deactivate any conda environment you may have previously activated using the command `conda deactivate`
 2. Create a new directory for snakemake pipelines in a location of your choosing: `mkdir snakemake-pipelines` and `cd` into that directory before completing the following step
