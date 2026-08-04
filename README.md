@@ -1,5 +1,5 @@
 # meioBIOME-metagenomics
-Computation pipeline for the assembly of host-associated metagenome-assembled genomes and recovery of host single-copy genes
+Computation pipeline for the assembly of host-associated metagenome-assembled genomes and recovery of host single-copy genes. Details of the pipeline and results are highlighted in our preprint (MeioBIOME: A snakemake workflow for the parallel analysis of meiofaunal genomes and host-associated bacteria/archaea)[https://www.biorxiv.org/content/10.64898/2026.07.23.740139v1]
 
 <img width="562" height="758" alt="Screenshot 2026-06-02 at 1 08 28 PM" src="https://github.com/user-attachments/assets/a6542a32-3878-4211-ad8e-f96f74bb79f0" />
 
