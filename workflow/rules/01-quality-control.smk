@@ -48,6 +48,8 @@ rule fastp:
         r2=scratch_dir + "01-analysis/04-deduplicated/{sample}_R2_paired.fastq.gz"
     log:
         scratch_dir + "03-log/04-deduplicated/{sample}_deduplicated.log"
+    conda:
+        "../envs/fastp.yaml"
     shell:
         '''
         module load fastp

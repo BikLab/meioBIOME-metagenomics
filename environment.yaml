@@ -188,4 +188,3 @@ dependencies:
   - yarl=1.24.5=py312h8a5da7c_0
   - yte=1.9.4=pyhd8ed1ab_0
   - zstd=1.5.7=hb78ec9c_6
-prefix: /home/ad14556/conda-envs/envs/snakemake-7.32.0
