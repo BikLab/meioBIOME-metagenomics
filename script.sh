@@ -12,10 +12,7 @@
 #SBATCH -e nematode-microbiome.err-%N
 #SBATCH -o nematode-microbiome.out-%N
 
-#Path Variables
-INPUT=/home/ad14556/snakemake-pipelines/metagenomicsPipeline
-
-#Activate QIIME2
+#Activate snakemake environment
 module load Miniforge3/24.1.2-0
 source activate /home/ad14556/conda-envs/envs/snakemake
 

@@ -13,16 +13,6 @@ scratch_path: '/scratch/ad14556/snakemake-pipeline-temp/'
 ###################
 # QC and ASSEMBLY #
 ###################
-phred_score: 'phred33'
-mismatches: '2'
-palindrome: '30'
-simple_clip: '10'
-leading_quality: '20'
-trailing_quality: '20'
-window_size: '4'
-sliding_window_quality: '10'
-minimum_seq_length: '100'
-
 metaspades_threads: 68
 metaspades_mem: 950000
 
@@ -37,8 +27,8 @@ mitoz_abundance: 0
 # completeness and contamination
 # set to 50 and 10 as per best practices
 # set to 0 and 100 to force output everything
-completeness: 0
-contamination: 100
+completeness: 50
+contamination: 10
 
 ############# 
 # DATABASES #
