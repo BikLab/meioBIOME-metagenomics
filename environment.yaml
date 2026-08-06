@@ -227,3 +227,6 @@ dependencies:
   - yte=1.8.1=pyha770c72_1
   - zstandard=0.23.0=py39hd399759_3
   - zstd=1.5.7=hb78ec9c_6
+  - pip
+  - pip:
+    - click
